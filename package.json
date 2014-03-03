@@ -1,0 +1,17 @@
+{
+  "name": "purjochat",
+  "version": "0.0.1",
+  "description": "purjochat",
+  "private": true,
+  "dependencies": {
+    "uglify-js": "*",
+    "socket.io": "*",
+    "requirejs": "*",
+    "grunt-cli": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-jade": "*",
+    "grunt-contrib-stylus": "*"
+  }
+}
