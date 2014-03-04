@@ -4,14 +4,17 @@
   "description": "purjochat",
   "private": true,
   "dependencies": {
+    "express": "*",
     "uglify-js": "*",
     "socket.io": "*",
     "requirejs": "*",
     "grunt-cli": "*",
+    "jade": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-watch": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-jade": "*",
+    "grunt-express-server": "*",
     "grunt-contrib-stylus": "*"
   }
 }

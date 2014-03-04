@@ -26,16 +26,40 @@ module.exports = function(grunt) {
         ext: '.min.js'
       }
     },
+    copy: {
+      lib: {
+        files: [
+          {
+            expand: true,
+            cwd: "src/lib",
+            src: ["*.js"],
+            dest: "public/js/"
+          }
+        ]
+      }
+    },
+    express: {
+      express: {
+        options: {
+          script: 'app.js'
+        }
+      }
+    },
     watch: {
       src: {
-        files: ['src/jade/*.jade', 'src/stylus/*.styl'],
-        tasks: ['default']
+        files: ['src/jade/*.jade', 'src/stylus/*.styl', 'src/lib/*.js'],
+        tasks: ['default'],
+        options: {
+          spawn: false
+        }
       }
     }
   });
   grunt.loadNpmTasks("grunt-contrib-jade");
   grunt.loadNpmTasks("grunt-contrib-stylus");
   grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-express-server");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  return grunt.registerTask("default", ['uglify', 'jade', 'stylus', 'watch']);
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  return grunt.registerTask("default", ['uglify', 'jade', 'stylus', 'copy', 'express', 'watch']);
 };
