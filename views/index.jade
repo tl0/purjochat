@@ -4,39 +4,34 @@ html(lang="en")
     title Purjochat
   link(rel='stylesheet', href='css/styles.css')
   script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js')
+  script(type='text/javascript', src='socket.io/socket.io.js')
   script(type='text/javascript', src='js/test.js')
   body
     h1 Purjochat
     #container
       p.
         Testi
-    div(class='chat-box')
+      p.speech.own Moikkaa
+      p.speech.other Moikkaa
+    div(class='chat-area')
+      div(class='chat-box')
         input(type='checkbox')
-        label(data-expanded="Close Chatbox", data-collapsed="Open Chatbox")
+        label(data-expanded="Close purjochat", data-collapsed="Open purjochat")
         div(class='chat-box-content')
           p(style='white-space:pre;')
             ul
-              li Ciluk baaa!!!
-              li Ciluk baafgdfga!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk baaa!!!
-              li Ciluk ba
+              li Babba petalar
+              li Nee ger
+              li Juu ei
+              li Ei joo
+      div(class='chat-box')
+        input(type='checkbox')
+        label(data-expanded="Risto reipas", data-collapsed="Risto reipas")
+        div(class='chat-box-content')
+          p(style='white-space:pre;')
+            ul
+              li
+                p.speech.own Moi
+              li
+                p.speech.other Ei.
+          input(type=text,id='kallu')

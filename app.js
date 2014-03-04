@@ -25,6 +25,15 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
+app.get('/socket.io', express.static(__dirname + "/node_modules\socket.io\lib"));
+
+io.sockets.on('connection', function(socket) {
+  socket.on('send', function(data) {
+    console.log(data);
+    io.sockets.emit('message', { msg: data });
+  });
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
