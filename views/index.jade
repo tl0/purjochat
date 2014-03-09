@@ -14,16 +14,12 @@ html(lang="en")
       p.speech.own Moikkaa
       p.speech.other Moikkaa
     div(class='chat-area')
-      div(class='chat-box')
+      div(class='chat-box', id='main')
         input(type='checkbox')
         label(data-expanded="Close purjochat", data-collapsed="Open purjochat")
         div(class='chat-box-content')
           p(style='white-space:pre;')
             ul
-              li Babba petalar
-              li Nee ger
-              li Juu ei
-              li Ei joo
       div(class='chat-box', id='chat-kallu')
         input(type='checkbox')
         label(data-expanded="Risto reipas", data-collapsed="Risto reipas")
@@ -34,4 +30,4 @@ html(lang="en")
                 p.speech.own Moi
               li
                 p.speech.other Ei.
-          input(type=text,id='input-kallu')
+          input(type=text,id='input')

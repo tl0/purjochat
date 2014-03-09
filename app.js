@@ -27,12 +27,29 @@ app.get('/', routes.index);
 
 app.get('/socket.io', express.static(__dirname + "/node_modules/socket.io/lib"));
 
+var users = {};
+var userIDs = {};
+
 io.sockets.on('connection', function(socket) {
+  socket.userID = Math.floor((Math.random()*1000000)+1);
+  users[socket.userID] = socket;
+  userIDs[socket.userID] = socket.userID;
+  
+  socket.emit('meta', { yourID: socket.userID, others: userIDs });
+  
+  socket.broadcast.emit('join', { user: socket.userID });
+
   socket.on('send', function(data) {
-    console.log(data);
-    io.sockets.emit('message', { msg: data });
+    users[data.receiver].emit('message', { user: data.user, receiver: data.receiver, message: data.message });
   });
-})
+  
+  socket.on('quit', function(data) {
+    socket.broadcast.emit('quit', { user: data.user });
+    delete users[data.user];
+    delete userIDs[data.user];
+  });
+  
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
