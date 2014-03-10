@@ -17,16 +17,20 @@ $(function() {
   
   socket.on('message', function (d) {
     console.log(d);
-    if($(".chat-area").find("#chat-" + d.receiver).length < 1) {
-      addWindow(d.receiver);
+    if(d.user == me)
+      juttu = d.receiver
+    else
+      juttu = d.user
+    if($(".chat-area").find("#chat-" + juttu).length < 1) {
+      addWindow(juttu); // ((d.receiver == me) ? "own" : "other")
     }
-    $("#chat-" + d.receiver).find("ul").append("<li><p class='speech "+ ((d.receiver == me) ? "own" : "other") +"'>" + d.message + "</p></li>");
+    $("#chat-" + juttu).find("ul").append("<li><p class='speech "+ d.type +"'>" + d.message + "</p></li>");
   });
   
   $("#input*").keyup(function(e) {
     if(e.keyCode == 13) {
         socket.emit('send', { receiver: $(this).data('user'), user: me, message: $(this).val() });
-        console.log("Kalu :D");
+        console.log("A");
     }
   });
   
@@ -47,8 +51,8 @@ function addWindow(id) {
     // hyi copypaste
     $("#chat-"+id+"").find("input").keyup(function(e) {
     if(e.keyCode == 13) {
-        socket.emit('send', { receiver: me, user: $(this).data('user'), message: $(this).val() });
-        console.log("Kalu :D");
+        socket.emit('send', { receiver: $(this).data('user'), user: me, message: $(this).val() });
+        console.log("D");
     }
   });
 }

@@ -40,7 +40,8 @@ io.sockets.on('connection', function(socket) {
   socket.broadcast.emit('join', { user: socket.userID });
 
   socket.on('send', function(data) {
-    users[data.receiver].emit('message', { user: data.user, receiver: data.receiver, message: data.message });
+    users[data.receiver].emit('message', { user: data.user, receiver: data.receiver, message: data.message, type: "other" });
+    users[data.user].emit('message', { user: data.receiver, receiver: data.user, message: data.message, type: "own" });
   });
   
   socket.on('quit', function(data) {

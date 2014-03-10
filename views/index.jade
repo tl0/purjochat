@@ -11,8 +11,8 @@ html(lang="en")
     #container
       p.
         Testi
-      p.speech.own Moikkaa
-      p.speech.other Moikkaa
+      p.speech.own Oma tekstisi!
+      p.speech.other Muiden teksti!
     div(class='chat-area')
       div(class='chat-box', id='main')
         input(type='checkbox')
@@ -20,14 +20,3 @@ html(lang="en")
         div(class='chat-box-content')
           p(style='white-space:pre;')
             ul
-      div(class='chat-box', id='chat-kallu')
-        input(type='checkbox')
-        label(data-expanded="Risto reipas", data-collapsed="Risto reipas")
-        div(class='chat-box-content')
-          p(style='white-space:pre;')
-            ul
-              li
-                p.speech.own Moi
-              li
-                p.speech.other Ei.
-          input(type=text,id='input')
